@@ -1,45 +1,45 @@
 - name: A test play
   hosts: test
   tasks:
-    - name: install chrony
+    - name: install chrony                #install chrony on target host
       shell:
         apt install chrony -y
-    - name: enable chrony
+    - name: enable chrony                 # enable chrony on target host
       shell:
         systemctl enable chrony
-    - name: remove pool ntp.ubuntu.com
+    - name: remove pool ntp.ubuntu.com                        #remove entry pool ntp.ubuntu.com from  chrony.conf file on target host
       replace:
         path: /etc/chrony/chrony.conf
         regexp: pool ntp.ubuntu.com        iburst maxsources 4.*[\n|\r|\t|\s]
-    - name: remove pool 0.ubuntu.pool.ntp.org
+    - name: remove pool 0.ubuntu.pool.ntp.org                 #remove  "entry pool 0.ubuntu.pool.ntp.org" from  chrony.conf file on target host
       replace:
         path: /etc/chrony/chrony.conf
         regexp: pool 0.ubuntu.pool.ntp.org iburst maxsources 1.*[\n|\r|\t|\s]
-    - name: remove pool 1.ubuntu.pool.ntp.org
+    - name: remove pool 1.ubuntu.pool.ntp.org                 #remove  entry "pool 1.ubuntu.pool.ntp.org" from  chrony.conf file on target host
       replace:
         path: /etc/chrony/chrony.conf
         regexp: pool 1.ubuntu.pool.ntp.org iburst maxsources 1.*[\n|\r|\t|\s]
-    - name: remove pool 2.ubuntu.pool.ntp.org
+    - name: remove pool 2.ubuntu.pool.ntp.org                 #remove entry "pool 2.ubuntu.pool.ntp.org" from  chrony.conf file on target host
       replace:
         path: /etc/chrony/chrony.conf
-        regexp: pool 2.ubuntu.pool.ntp.org iburst maxsources 2.*[\n|\r|\t|\s]
-    - name: append 'server 0.gr.pool.ntp.org iburst' to /etc/chrony/chrony.conf
+        regexp: pool 2.ubuntu.pool.ntp.org iburst maxsources 2.*[\n|\r|\t|\s]         
+    - name: append 'server 0.gr.pool.ntp.org iburst' to /etc/chrony/chrony.conf           #add entry server 0.gr.pool.ntp.org iburst to  chrony.conf file on target host
       lineinfile:
         path: /etc/chrony/chrony.conf
         line: "server 0.gr.pool.ntp.org iburst"
-    - name: append 'server 1.gr.pool.ntp.org iburst' to /etc/chrony/chrony.conf
+    - name: append 'server 1.gr.pool.ntp.org iburst' to /etc/chrony/chrony.conf           #add entry server 1.gr.pool.ntp.org iburst to  chrony.conf file on target host
       lineinfile:
         path: /etc/chrony/chrony.conf
         line: "server 1.gr.pool.ntp.org iburst"
-    - name: append 'server 2.gr.pool.ntp.org iburst' to /etc/chrony/chrony.conf
+    - name: append 'server 2.gr.pool.ntp.org iburst' to /etc/chrony/chrony.conf           #add entry server 2.gr.pool.ntp.org iburst to  chrony.conf file on target host
       lineinfile:
         path: /etc/chrony/chrony.conf
         line: "server 2.gr.pool.ntp.org iburst"
-    - name: append 'server 3.gr.pool.ntp.org iburst' to /etc/chrony/chrony.conf
+    - name: append 'server 3.gr.pool.ntp.org iburst' to /etc/chrony/chrony.conf           #add entry server 3.gr.pool.ntp.org iburst to  chrony.conf file on target host
       lineinfile:
         path: /etc/chrony/chrony.conf
         line: "server 3.gr.pool.ntp.org iburst"
-    - name: start chrony
+    - name: start chrony                       # start chrony on target host           
       shell:
         systemctl start chrony
 
