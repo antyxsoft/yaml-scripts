@@ -32,13 +32,16 @@
 
 ### Improvements
 **No need to run the debian installer.**
+
 Find a way to spawn a VM without the need to manualy configure the distro. qcow images?
 
 **Setting a static ip before install.**
+
 Can oVirt set the private ip if the vm before install?
 Else i can do it with ansible.
 
 **Is there a way to install the 3cxpbx package without the need to accept the licence?**
+
 The window is created using `dialog` is there a way to automaticaly accept?
 After accepting the licence:
 1. it updates the certificates (/etc/ca-certificates/update.d...)
@@ -46,6 +49,9 @@ After accepting the licence:
 3. Shows the welcome message with 2 options. Run the tool using the web browser or from the CLI
 4. When selecting Option 1 it gives this output:
 > Setting up nginx
+>
 > Prossesing triggers for systemd
+>
 > Prossesing triggers for man-db
+>
 > Prossesing triggers for libc-bin
