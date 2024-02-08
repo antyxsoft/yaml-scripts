@@ -1,0 +1,9 @@
+- name: 'Configuring dhcpcd for static IP'
+  ansible.builtin.blockinfile:
+    path: ./rasbian-cfg/root/etc/dhcpcd.conf
+    create: false
+    block: |
+       interface eth0
+       static ip_address={{ static_ip }}
+       static routes={{ gateway }}
+       static domain_name_servers={{ domain_name_servers }}

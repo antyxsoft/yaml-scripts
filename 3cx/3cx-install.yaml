@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: no
+  vars_files: vars-file.yaml
+  roles:
+    - python
+    - upgrade-packages
+    - install-packages
+    - install-3cx

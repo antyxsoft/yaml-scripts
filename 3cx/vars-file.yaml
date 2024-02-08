@@ -1,0 +1,19 @@
+---
+## NETWORK CONFIGURATION
+#Comment: Enter static IP configuration
+- static_ip: '192.168.1.20'
+- gateway: '192.168.1.1'
+- domain_name_servers: '1.1.1.1'
+
+## SYSTEM CONFIGURATION
+# Packages to install
+- packages:
+    - vim
+    - gnupg
+    - net-tools 
+    - dphys-swapfile 
+    - htop 
+    - mtr 
+    - screen
+    - curl 
+    - dnsutils
