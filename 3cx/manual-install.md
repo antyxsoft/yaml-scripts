@@ -9,18 +9,19 @@
 ## Installation
 ***After installing, updating and upgrading the Debian VM***
 
-1. Install gnupg.
-> apt install gnupg
-2. Get the 3CX public key and add it to your keyring.
-> wget -O- http://downloads-global.3cx.com/downloads/3cxpbx/public.key | apt-key add -
-3. Add the 3CX repo.
-> echo "deb http://downloads-global.3cx.com/downloads/debian buster main" | tee /etc/apt/sources.list.d/3cxpbc.list
-4. Update apt.
-> apt update
-5. Install required tools for 3CX install.
-> apt install net-tools dphys-swapfile htop mtr screen curl dnsutils -y
-6. Now the system is ready to install 3CX!
-> apt install 3cxpbx -y
+1. Install gnupg: `apt install gnupg`
 
-**BONUS POINTS**
-Can I send a setupconfig.xml file later?
+2. Get the 3CX public key and add it to your keyring.
+
+		wget -O- http://downloads-global.3cx.com/downloads/3cxpbx/public.key | apt-key add -
+
+3. Add the 3CX repo.
+
+		echo "deb http://downloads-global.3cx.com/downloads/debian buster main" | tee /etc/apt/sources.list.d/3cxpbc.list
+
+4. Update the repositories: `apt update`
+5. Install required tools for 3CX install.
+
+		apt install net-tools dphys-swapfile htop mtr screen curl dnsutils -y
+
+6. Now the system is ready to install 3CX! `apt install 3cxpbx -y`
