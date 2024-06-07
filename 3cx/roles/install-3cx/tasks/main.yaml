@@ -1,22 +1,31 @@
 - name: 'Downloading 3CX pubkey' # wget http://downloads-global.3cx.com/downloads/3cxpbx/public.key
   ansible.builtin.get_url:
-    url: http://downloads-global.3cx.com/downloads/3cxpbx/public.key
+    url: https://repo.3cx.com/key.pub
     dest: /root/
 
 - name: 'Adding 3CX pubkey' # apt-key add
   ansible.builtin.apt_key:
     # url: http://downloads-global.3cx.com/downloads/3cxpbx/public.key
-    file: /root/public.key
+    file: /root/key.pub
     state: present
 
 - name: 'Adding 3CX Repo' # echo "deb http://downloads-global.3cx.com/downloads/debian buster main" | tee /etc/apt/sources.list.d/3cxpbc.list
   ansible.builtin.lineinfile:
     create: true
-    path: /etc/apt/sources.list.d/3cxpbc.list
-    line: "deb http://downloads-global.3cx.com/downloads/debian buster main"
+    path: /etc/apt/sources.list.d/3cxpbc.list 
+    line: "deb http://repo.3cx.com/3cx bookworm main"
 
-- name: 'Update repositories'
+- name: 'Updating repositories'
   ansible.builtin.apt:
     update_cache: yes
-#    name: "3cxpbx"
-#    state: present
+    upgrade: yes
+
+- name: 'Transfering install script'
+  ansible.builtin.copy:
+    src: ./automate-dialog/
+    dest: /root/
+    mode: 0755
+
+- name: 'Installing 3CX'
+  ansible.builtin.command:
+    cmd: ./install-3cx.exp
