@@ -1,4 +1,4 @@
-- name: 'Upgrading Packages'
+- name: 'Updating repositories'
   ansible.builtin.apt:
     update_cache: yes
     upgrade: yes

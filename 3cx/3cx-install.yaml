@@ -4,6 +4,6 @@
   vars_files: vars-file.yaml
   roles:
     - python
-    - upgrade-packages
+    - update-repositories
     - install-packages
     - install-3cx

@@ -1,8 +1,0 @@
-- name: 'Creating hosts file'
-  ansible.builtin.blockinfile:
-    path: ./hosts
-    create: true
-    block: |
-      all:
-        hosts:
-          {{ static_ip }}
